@@ -1,5 +1,6 @@
 # trueExtendTest
 #Notas
+
 No se realizaron validaciones de campos, duplicados, etc.
 
 No se creó el CRUD para la alta de Clases.
@@ -18,17 +19,30 @@ Servicios REST
 
 
 *Create Student
+
 POST
+
 http://localhost:8080/restService/createStudent/
+
 JSON DATA
+
 {"lastName":"usr1","firstName":"Nelson","id":""}
+
+
+
 
 
 *Lista de Estudiantes
 POST
+
 http://localhost:8080/restService/listOfStudents/
 
+
+
 *Lista de Estudiantes y Clases seleccionadas
+
 POST
+
 http://localhost:8080/restService/studentClassList/
+
 
