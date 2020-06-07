@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:sec="http://www.springframework.org/security/tags">
+
+<h:head>
+    <title>PrimeFaces Hello World Example</title>
+    <h:outputStylesheet name="/css/main.css"/>
+</h:head>
+
+<h:form id="form1">
+
+    <p:dataTable var="clases" value="#{mainController.classList}">
+        <f:facet name="header">
+            List of Class
+        </f:facet>
+        <p:column headerText="Code">
+            <h:outputText value="#{clases.code}"/>
+        </p:column>
+
+        <p:column headerText="Title">
+            <h:outputText value="#{clases.title}"/>
+        </p:column>
+
+        <p:column headerText="Description">
+            <h:outputText value="#{clases.description}"/>
+        </p:column>
+
+    </p:dataTable>
+
+    <p/>
+    <p:panel>
+        <p:outputLabel value="Add new Student"/>
+        <p:panelGrid columns="2">
+            <p:outputLabel value="First Name"/>
+            <p:inputText value="#{mainController.student.firstName}"/>
+            <p:outputLabel value="Last Name"/>
+            <p:inputText value="#{mainController.student.lastName}"/>
+
+
+            <p:selectOneMenu id="classId" value="#{mainController.selectedClass.code}">
+                <f:selectItem itemLabel="Select One" itemValue=""/>
+                <f:selectItems value="#{mainController.classList}" var="clases" itemLabel="#{clases.title}"
+                               itemValue="#{clases}"/>
+            </p:selectOneMenu>
+            <p:commandButton value="Add" action="#{mainController.addStudent}" process="form1" update="form1"/>
+
+        </p:panelGrid>
+    </p:panel>
+
+    <p/>
+    <p:dataTable var="clases2" value="#{mainController.studentList}">
+        <f:facet name="header">
+            List of Students
+        </f:facet>
+        <p:column headerText="Id">
+            <h:outputText value="#{clases2.id}"/>
+        </p:column>
+
+        <p:column headerText="FIRST NAME">
+            <h:outputText value="#{clases2.firstName}"/>
+        </p:column>
+
+        <p:column headerText="LAST NAME">
+            <h:outputText value="#{clases2.lastName}"/>
+        </p:column>
+
+    </p:dataTable>
+
+    <p:dataTable var="clases3" value="#{mainController.studentClassList}">
+        <f:facet name="header">
+            List of Students and Classes
+        </f:facet>
+        <p:column headerText="Id STUDENT">
+            <h:outputText value="#{clases3.student.id}"/>
+        </p:column>
+
+        <p:column headerText="CODE">
+            <h:outputText value="#{clases3.class_.code}"/>
+        </p:column>
+
+    </p:dataTable>
+
+
+</h:form>
+
+</html>
